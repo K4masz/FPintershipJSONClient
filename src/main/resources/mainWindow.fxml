@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import application.model.RestartParameter.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="800.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.121"
+            fx:controller="application.controllers.MainController">
+    <bottom>
+        <TilePane  BorderPane.alignment="TOP_LEFT"
+        minHeight="22" maxWidth="700" minWidth="700" maxHeight="22" prefHeight="22" prefWidth="700.0">
+            <children>
+                <TextArea fx:id="statusTextArea"
+                         TilePane.alignment="TOP_LEFT" editable="false" layoutX="-3.0" layoutY="-6.0" minHeight="22" maxWidth="730" minWidth="730" maxHeight="22" prefHeight="22.0" prefWidth="730.0" />
+            </children>
+        </TilePane>
+    </bottom>
+    <top>
+        <MenuBar prefWidth="800.0" BorderPane.alignment="CENTER">
+            <menus>
+                <Menu mnemonicParsing="false" text="Help">
+                    <items>
+                        <MenuItem mnemonicParsing="false" text="About"/>
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+    </top>
+    <left>
+    </left>
+    <center>
+        <VBox prefHeight="200.0" prefWidth="350.0" BorderPane.alignment="CENTER">
+            <children>
+                <Label layoutX="5.0" text="Current Situation"/>
+                <TextArea fx:id="currentSituationTextArea" editable="false" layoutX="5.0" layoutY="17.0"
+                          maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity"
+                          minWidth="-Infinity" prefHeight="730.0" prefWidth="443.0" text="Waiting for communication..."
+                          wrapText="true"/>
+
+            </children>
+        </VBox>
+    </center>
+    <right>
+        <Pane prefHeight="200.0" prefWidth="250.0" BorderPane.alignment="CENTER">
+            <children>
+                <ChoiceBox fx:id="actionChoiceBox" disable="true" layoutX="33.0" layoutY="73.0" prefHeight="25.0"
+                           prefWidth="133.0"/>
+                <Slider fx:id="valueSlider" disable="true" layoutX="31.0" layoutY="175.0" max="1000.0" min="1.0"
+                        minorTickCount="0" value="10.0"/>
+                <ChoiceBox fx:id="parameterChoiceBox" disable="true" layoutX="26.0" layoutY="123.0" prefHeight="25.0"
+                           prefWidth="151.0"/>
+                <ChoiceBox fx:id="valueChoiceBox" disable="true" layoutX="24.0" layoutY="214.0" prefWidth="150.0"/>
+                <Label layoutX="33.0" layoutY="56.0" text="Action"/>
+                <Label layoutX="27.0" layoutY="106.0" text="Parameter"/>
+                <Label layoutX="30.0" layoutY="158.0" text="Value"/>
+                <Label layoutX="25.0" layoutY="197.0" text="Value"/>
+                <Button fx:id="submitButton" disable="true" layoutX="70.0" layoutY="258.0" mnemonicParsing="false"
+                        onMouseClicked="#executeAction" text="Submit"/>
+                <RadioButton fx:id="simulationModeRadioButton" disable="true" layoutX="60.0" layoutY="39.0"
+                             mnemonicParsing="false" text="Simulation"/>
+                <RadioButton fx:id="chaarrModeRadioButton" disable="true" layoutX="60.0" layoutY="14.0"
+                             mnemonicParsing="false" text="Chaarr"/>
+                <Button fx:id="checkSituationButton" disable="true" layoutX="47.0" layoutY="291.0"
+                        mnemonicParsing="false" onAction="#checkSituation" text="Check Situation"/>
+                <Label layoutX="20.0" layoutY="335.0" text="Restart Parameters"/>
+                <TilePane fx:id="restartParamsTilePane" alignment="TOP_CENTER" layoutX="-4.0" layoutY="360.0"
+                          maxHeight="-Infinity" maxWidth="-Infinity" prefColumns="2" prefHeight="384.0" prefRows="10"
+                          prefWidth="246.0" vgap="13.5">
+                    <children>
+                        <RestartParameterHBox fx:id ="chaarrHatredRestartParameter" >
+                            <children>
+                                <ToggleButton fx:id="chaarrHatredParameterToggleButton" maxHeight="25.0" maxWidth="110.0" prefWidth="110"
+                                              mnemonicParsing="false" text="ChaarrHatred"/>
+                                <Spinner fx:id="chaarrHatredParameterSpinner" editable="true" maxHeight="25.0"
+                                         maxWidth="75.0" prefHeight="25.0" prefWidth="75.0"/>
+                            </children>
+                        </RestartParameterHBox>
+                        <RestartParameterHBox fx:id ="knowledgeRestartParameter">
+                            <children>
+                                <ToggleButton fx:id="knowledgeParameterToggleButton" layoutX="13.0" layoutY="10.0"
+                                              maxHeight="25.0" maxWidth="110.0" mnemonicParsing="false" prefWidth="110"
+                                              text="Knowledge"/>
+                                <Spinner fx:id="knowledgeParameterSpinner" editable="true" layoutX="103.0"
+                                         layoutY="10.0" maxHeight="25.0" maxWidth="75.0" prefHeight="25.0"
+                                         prefWidth="75.0"/>
+                            </children>
+                        </RestartParameterHBox>
+                        <RestartParameterHBox fx:id="crewDeathsRestartParameter">
+                            <children>
+                                <ToggleButton fx:id="crewDeathsParameterToggleButton" layoutX="13.0" layoutY="35.0" prefWidth="110"
+                                              maxHeight="25.0" maxWidth="110.0" mnemonicParsing="false"
+                                              text="CrewDeaths"/>
+                                <Spinner fx:id="crewDeathsParameterSpinner" editable="true" layoutX="103.0"
+                                         layoutY="35.0" maxHeight="25.0" maxWidth="75.0" prefHeight="25.0"
+                                         prefWidth="75.0"/>
+                            </children>
+                        </RestartParameterHBox>
+                        <RestartParameterHBox fx:id="survivorDeathsRestartParameter">
+                            <children>
+                                <ToggleButton fx:id="survivorDeathsParameterToggleButton" ellipsisString="" prefWidth="110"
+                                              graphicTextGap="0.0" layoutX="13.0" layoutY="60.0" maxHeight="25.0"
+                                              maxWidth="110.0" mnemonicParsing="false" text="SurvivorDeaths"
+                                              textOverrun="CLIP"/>
+                                <Spinner fx:id="survivorDeathsParameterSpinner" editable="true" layoutX="103.0"
+                                         layoutY="60.0" maxHeight="25.0" maxWidth="75.0" prefHeight="25.0"
+                                         prefWidth="75.0"/>
+                            </children>
+                        </RestartParameterHBox>
+                        <RestartParameterHBox fx:id="savedScienceRestartParameter">
+                            <children>
+                                <ToggleButton fx:id="savedScienceParameterToggleButton" layoutX="13.0" layoutY="85.0" prefWidth="110"
+                                              maxHeight="25.0" maxWidth="110.0" mnemonicParsing="false"
+                                              text="SavedScience"/>
+                                <Spinner fx:id="savedScienceParameterSpinner" editable="true" layoutX="103.0"
+                                         layoutY="85.0" maxHeight="25.0" maxWidth="75.0" prefHeight="25.0"
+                                         prefWidth="75.0"/>
+                            </children>
+                        </RestartParameterHBox>
+                        <RestartParameterHBox fx:id="savedSurvivorsRestartParameter">
+                            <children>
+                                <ToggleButton fx:id="savedSurvivorsParameterToggleButton" layoutX="13.0" layoutY="110.0" prefWidth="110"
+                                              maxHeight="25.0" maxWidth="110.0" mnemonicParsing="false"
+                                              text="SavedSurvivors"/>
+                                <Spinner fx:id="savedSurvivorsParameterSpinner" editable="true" layoutX="103.0"
+                                         layoutY="110.0" maxHeight="25.0" maxWidth="75.0" prefHeight="25.0"
+                                         prefWidth="75.0"/>
+                            </children>
+                        </RestartParameterHBox>
+                        <RestartParameterHBox fx:id="poludnicaMatterRestartParameter">
+                            <children>
+                                <ToggleButton fx:id="poludnicaMatterParameterToggleButton" layoutX="13.0" prefWidth="110"
+                                              layoutY="135.0" maxHeight="25.0" maxWidth="110.0" mnemonicParsing="false"
+                                              text="PołudnicaMatter" textOverrun="CLIP"/>
+                                <Spinner fx:id="poludnicaMatterParameterSpinner" editable="true" layoutX="103.0"
+                                         layoutY="135.0" maxHeight="25.0" maxWidth="75.0" prefHeight="25.0"
+                                         prefWidth="75.0"/>
+                            </children>
+                        </RestartParameterHBox>
+                        <RestartParameterHBox fx:id="poludnicaEnergyRestartParameter">
+                            <children>
+                                <ToggleButton fx:id="poludnicaEnergyParameterToggleButton" layoutX="13.0"
+                                              layoutY="160.0" maxHeight="25.0" maxWidth="110.0" mnemonicParsing="false" prefWidth="110"
+                                              text="PołudnicaEnergy" textOverrun="CLIP"/>
+                                <Spinner fx:id="poludnicaEnergyParameterSpinner" editable="true" layoutX="103.0"
+                                         layoutY="160.0" maxHeight="25.0" maxWidth="75.0" prefHeight="25.0"
+                                         prefWidth="75.0"/>
+                            </children>
+                        </RestartParameterHBox>
+                        <RestartParameterHBox fx:id="expeditionMatterRestartParameter">
+                            <children>
+                                <ToggleButton fx:id="expeditionMatterParameterToggleButton" layoutX="13.0"
+                                              layoutY="185.0" maxHeight="25.0" maxWidth="110.0" mnemonicParsing="false" prefWidth="110"
+                                              text="ExpeditionMatter" textOverrun="CLIP"/>
+                                <Spinner fx:id="expeditionMatterParameterSpinner" editable="true" layoutX="103.0"
+                                         layoutY="185.0" maxHeight="25.0" maxWidth="75.0" prefHeight="25.0"
+                                         prefWidth="75.0"/>
+                            </children>
+                        </RestartParameterHBox>
+                        <RestartParameterHBox fx:id="expeditionEnergyRestartParameter">
+                            <children>
+                                <ToggleButton fx:id="expeditionEnergyParameterToggleButton" maxHeight="25.0" prefWidth="110"
+                                              maxWidth="110.0" mnemonicParsing="false" text="ExpeditionEnergy"/>
+                                <Spinner fx:id="expeditionEnergyParameterSpinner" editable="true" maxHeight="25.0"
+                                         maxWidth="75.0" prefHeight="25.0" prefWidth="75.0"/>
+                            </children>
+                        </RestartParameterHBox>
+
+                    </children>
+                </TilePane>
+                <Label fx:id="sliderValueLabel" layoutX="80.0" layoutY="158.0"/>
+            </children>
+        </Pane>
+    </right>
+</BorderPane>
